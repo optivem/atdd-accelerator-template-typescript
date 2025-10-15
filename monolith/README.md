@@ -29,12 +29,6 @@ npm install -g @nestjs/cli
 npm run build
 ```
 
-Set the port
-
-```shell
-$env:PORT=8080
-```
-
 7. Run the application
 
 ```shell
