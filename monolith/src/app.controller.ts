@@ -16,7 +16,7 @@ export class AppController {
   }
 
   @Get('api/todos/:id')
-  getTodo(@Param('id') id: string): any {
-    return this.appService.getTodo(Number(id));
+  async getTodo(@Param('id') id: string): Promise<any> {
+    return await this.appService.getTodo(Number(id));
   }
 }

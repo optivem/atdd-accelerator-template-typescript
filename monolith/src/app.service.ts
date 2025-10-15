@@ -10,12 +10,8 @@ export class AppService {
     return 'Echo response';
   }
 
-  getTodo(id: number): any {
-    return {
-      userId: 1,
-      id: id,
-      title: `Sample todo ${id}`,
-      completed: false
-    };
+  async getTodo(id: number): Promise<any> {
+    const response = await fetch(`https://jsonplaceholder.typicode.com/todos/${id}`);
+    return await response.json();
   }
 }
