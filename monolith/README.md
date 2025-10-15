@@ -38,12 +38,6 @@ Build the application
 npm run build
 ```
 
-Set the port
-
-```shell
-$env:PORT = "8080"
-```
-
 Run the application
 
 ```shell
@@ -55,3 +49,6 @@ Restart the application
 ```shell
 npm run build && npm run start
 ```
+
+App should now be running on:
+http://localhost:8080/
