@@ -2,40 +2,49 @@
 
 ## Instructions
 
-1. Open up the 'monolith' folder in Visual Studio Code (make sure it is at the root of your project)
+Open up the 'monolith' folder
 
-2. Check that you have Node.js 20 installed
+```shell
+cd monolith
+```
+
+Check that you have Powershell 7
+
+```shell
+$PSVersionTable.PSVersion
+```
+
+Check that you have Node.js 22 installed
+
 ```shell
 node -v
 ```
 
-3. Install dependencies
+Install dependencies
 
 ```shell
 npm install
 ```
 
-4. Install NestJS CLI
+Install NestJS CLI
 
 ```shell
 npm install -g @nestjs/cli
 ```
 
-5. Restart Visual Studio Code
-
-6. Build the application
+Build the application
 
 ```shell
 npm run build
 ```
 
-7. Run the application
+Run the application
 
 ```shell
 npm run start
 ```
 
-8. Restart the application
+Restart the application
 
 ```shell
 npm run build && npm run start

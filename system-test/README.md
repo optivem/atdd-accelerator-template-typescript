@@ -2,41 +2,55 @@
 
 ## Instructions
 
-1. Open up the 'system-test' folder in Visual Studio Code (make sure it is at the root of your project)
+Open up the 'system-test' folder
 
-2. Setup
+```shell
+cd system-test
+```
+
+Check that you have Powershell 7
+
+```shell
+$PSVersionTable.PSVersion
+```
+
+Check that you have Node.js 22 installed
+
+```shell
+node -v
+```
+
+Install dependencies
 
 ```shell
 npm install
 ```
 
-3. Install Playwright
+Install Playwright
 
 ```shell
 npx playwright install
 ```
 
-4. Restart Visual Studio Code
-
-5. Start Docker Containers
+Start Docker Containers
 
 ```shell
 docker compose up -d
 ```
 
-6. Run All Tests
+Run All Tests
 
 ```shell
 npm test
 ```
 
-7. Run Smoke Tests Only
+Run Smoke Tests Only
 
 ```shell
 npm test -- test/smoke-tests
 ```
 
-8. Stop Docker Containers
+Stop Docker Containers
 
 ```shell
 docker compose down
