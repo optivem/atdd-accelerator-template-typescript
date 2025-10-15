@@ -39,10 +39,10 @@ describe('UI E2E Test', () => {
     console.log('Actual result text:', resultText);
     
     // Verify the todo data is displayed (more flexible checking)
-    expect(resultText).toMatch(/userId.*1/);
-    expect(resultText).toMatch(/id.*4/);
-    expect(resultText).toContain('title');
-    expect(resultText).toContain('completed');
+    expect(resultText).toMatch(/User ID.*1/);
+    expect(resultText).toMatch(/ID.*4/);
+    expect(resultText).toMatch(/Title/);
+    expect(resultText).toMatch(/Completed/);
     
     await browser.close();
   });
