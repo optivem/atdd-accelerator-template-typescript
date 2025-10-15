@@ -29,6 +29,20 @@ npm install -g @nestjs/cli
 npm run build
 ```
 
-TODO: VJ: Comment
+Set the port
+```shell
+$env:PORT=8080
+```
 
-TODO: VJ: Comment 2025-10-08
+7. Run the application
+
+```shell
+npm run start
+```
+
+8. Restart the application
+
+```shell
+$env:PORT=8080
+npm run build && npm run start
+```
