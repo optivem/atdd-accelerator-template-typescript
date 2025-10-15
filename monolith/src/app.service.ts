@@ -9,4 +9,13 @@ export class AppService {
   getEcho(): string {
     return 'Echo response';
   }
+
+  getTodo(id: number): any {
+    return {
+      userId: 1,
+      id: id,
+      title: `Sample todo ${id}`,
+      completed: false
+    };
+  }
 }
