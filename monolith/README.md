@@ -43,6 +43,5 @@ npm run start
 8. Restart the application
 
 ```shell
-$env:PORT=8080
 npm run build && npm run start
 ```
