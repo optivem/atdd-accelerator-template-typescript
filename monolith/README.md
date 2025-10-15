@@ -38,6 +38,12 @@ Build the application
 npm run build
 ```
 
+Set the port
+
+```shell
+$env:PORT = "8080"
+```
+
 Run the application
 
 ```shell
