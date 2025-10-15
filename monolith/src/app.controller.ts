@@ -1,4 +1,5 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, Res } from '@nestjs/common';
+import type { Response } from 'express';
 import { AppService } from './app.service';
 
 @Controller()
@@ -18,5 +19,10 @@ export class AppController {
   @Get('api/todos/:id')
   async getTodo(@Param('id') id: string): Promise<any> {
     return await this.appService.getTodo(Number(id));
+  }
+
+  @Get('todos')
+  getTodosPage(@Res() res: Response): void {
+    res.send(this.appService.getTodosPageHtml());
   }
 }
