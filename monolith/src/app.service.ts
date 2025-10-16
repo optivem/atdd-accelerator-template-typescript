@@ -14,7 +14,10 @@ export class AppService {
   }
 
   async getTodo(id: number): Promise<any> {
-    const baseUrl = this.configService.get<string>('TODOS_API_BASE_URL', 'https://jsonplaceholder.typicode.com');
+    const baseUrl = this.configService.get<string>(
+      'TODOS_API_BASE_URL',
+      'https://jsonplaceholder.typicode.com',
+    );
     const response = await fetch(`${baseUrl}/todos/${id}`);
     return await response.json();
   }

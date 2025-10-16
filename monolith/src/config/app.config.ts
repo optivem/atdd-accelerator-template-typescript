@@ -5,5 +5,6 @@ export interface AppConfig {
 
 export const getAppConfig = (): AppConfig => ({
   port: parseInt(process.env.PORT || '8080', 10),
-  todosApiBaseUrl: process.env.TODOS_API_BASE_URL || 'https://jsonplaceholder.typicode.com',
+  todosApiBaseUrl:
+    process.env.TODOS_API_BASE_URL || 'https://jsonplaceholder.typicode.com',
 });
