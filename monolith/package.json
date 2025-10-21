@@ -1,10 +1,10 @@
 {
-  "name": "monolith",
+  "name": "@optivem/atdd-accelerator-template-monolith",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "description": "ATDD Accelerator Template - Monolith Service",
+  "author": "Optivem",
   "private": true,
-  "license": "UNLICENSED",
+  "license": "CC0-1.0",
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
