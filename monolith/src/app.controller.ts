@@ -7,8 +7,8 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  getHomePage(@Res() res: Response): void {
+    res.send(this.appService.getHomePageHtml());
   }
 
   @Get('api/echo')
