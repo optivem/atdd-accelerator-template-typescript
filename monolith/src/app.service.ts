@@ -59,7 +59,7 @@ export class AppService {
                     <p><strong>User ID:</strong> \${todo.userId}</p>
                     <p><strong>ID:</strong> \${todo.id}</p>
                     <p><strong>Title:</strong> \${todo.title}</p>
-                    <p><strong>Completed:</strong> \${todo.completed}</p>
+                    <p><strong>Completed:</strong> \${todo.completed ? 'Yes' : 'No'}</p>
                 \`;
             } catch (error) {
                 resultDiv.textContent = 'Error fetching todo: ' + error.message;

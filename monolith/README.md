@@ -32,12 +32,6 @@ Install NestJS CLI
 npm install -g @nestjs/cli
 ```
 
-Set the port
-
-```shell
-$env:PORT = "8080"
-```
-
 Build the application
 
 ```shell
