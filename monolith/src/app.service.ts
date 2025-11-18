@@ -1,8 +1,12 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class AppService {
+  private readonly maxRetries = 3;
+  private readonly retryDelayMs = 1000;
+  private readonly timeoutMs = 30000;
+
   constructor(private configService: ConfigService) {}
 
   getHello(): string {
@@ -38,8 +42,49 @@ export class AppService {
       'TODOS_API_BASE_URL',
       'https://jsonplaceholder.typicode.com',
     );
-    const response = await fetch(`${baseUrl}/todos/${id}`);
-    return await response.json();
+
+    for (let attempt = 0; attempt < this.maxRetries; attempt++) {
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), this.timeoutMs);
+
+        const response = await fetch(`${baseUrl}/todos/${id}`, {
+          signal: controller.signal,
+        });
+
+        clearTimeout(timeoutId);
+
+        if (!response.ok) {
+          if (response.status === 404) {
+            throw new HttpException('Todo not found', HttpStatus.NOT_FOUND);
+          }
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const todo = await response.json();
+        
+        if (!todo) {
+          throw new HttpException('Todo not found', HttpStatus.NOT_FOUND);
+        }
+        
+        return todo;
+      } catch (error) {
+        if (error instanceof HttpException && error.getStatus() === HttpStatus.NOT_FOUND) {
+          throw error;
+        }
+
+        if (attempt === this.maxRetries - 1) {
+          throw new HttpException(
+            `External API is unavailable after ${this.maxRetries} attempts: ${error.message}`,
+            HttpStatus.SERVICE_UNAVAILABLE,
+          );
+        }
+
+        await new Promise(resolve => setTimeout(resolve, this.retryDelayMs));
+      }
+    }
+
+    throw new HttpException('Unexpected error', HttpStatus.INTERNAL_SERVER_ERROR);
   }
 
   getTodosPageHtml(): string {
